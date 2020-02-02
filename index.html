@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <style>
+    .wrapper {
+      max-width: 2000px;
+      min-width: 500px;
+      width: 80%;
+      margin: 0 auto;
+    }
+
+    form {
+      display: flex;
+      flex-direction: column;
+    }
+  </style>
+
+  <script>
+    window.addEventListener('load', () => {
+      const summaryEl = document.querySelector('#summary');
+      const formstaticSubject = document.querySelector('#formstatic-subject');
+
+      const updateSummary = (e) => {
+        formstaticSubject.value = e.target.value;
+      }
+
+      summaryEl.addEventListener('change', updateSummary);
+    });
+  </script>
+</head>
+<body>
+  <div class="wrapper">
+    <form action="https://formstatic.dev" method="POST">
+      <label for="name">Name:</label>
+      <input type="text" id="name" name="name" required>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" required>
+
+      <label for="summary">Question Summary:</label>
+      <input type="text" id="summary" name="summary" required>
+
+      <input type="hidden" id="formstatic-subject" name="$subject" value="person-unique-id">
+
+      <label for="question">Details</label>
+      <textarea id="question" name="question" placeholder="details..."></textarea>
+
+      <button type="submit">Submit</button>
+
+      <input type="hidden" name="$processor" value="email">
+      <input type="hidden" name="$to" value="ChristianDibalaBell@gmail.com">
+    </form>
+  </div>
+</body>
+</html>
